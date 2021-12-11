@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.cla.mapper.Class_infomapper">
+    <select id="getclassList" resultType="com.example.cla.entity.Class_Info">
+        select c.c_id,c.cname,c.cinfo,c.cad,c.cty,c.cap from cla_info c
+        where 1=1 and c.cname like "%${field_name}%" limit ${start}, ${page_size}
+    </select>
+    <update id="geteditclass">
+        update cla_info c set c.cname="${cname}",c.cinfo="${cinfo}",c.cad="${cad}",c.cty="${cty}",c.cap="${cap}" where c.c_id=${c_id}
+    </update>
+    <delete id="deleteclass">
+        delete from cla_info where c_id=${c_id}
+    </delete>
+    <insert id="addclass">
+        insert into cla_info values (#{c_id},#{cname},#{cinfo},#{cad},#{cty},${cap})
+    </insert>
+    <select id="getAllClassList" resultType="com.example.cla.entity.Class_Info">
+        select c.c_id,c.cname,c.cinfo,c.cad,c.cty,c.cap from cla_info c
+    </select>
+</mapper>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .nav{position:absolute;left:30%;right:30%;top:0;bottom:85%;display:inline-block;z-idnex:3;background-color: #FFFFFF;}
+        .nav ul{text-align:center;margin:0 auto;color:#999999;}
+        .nav ul li{list-style:none;width:30%;display:inline-block;margin-top:1%;padding:2% 0;font-size: large;}
+        .nav_pic{margin-left:0%;margin-top:-6%;float:left;margin-right:2%;width: 40px;height: 40px;}
+        .main{position:absolute;left:0;right:0;top:10%;bottom:0;background-color:#FFFFFF;z-index:1;}
+        .main_table{position:absolute;left:18%;right:18%;top:0%;bottom:0%;background-color:#FFF;text-align:center;padding-top:1%;z-index:2;
+        }
+        a{color:#999999;text-decoration:none}
+        #add_bt{height:27px;margin-left:10px;margin-right:10px;}
+        #cl_bt{height:27px;margin-left:10px;margin-right:10px;}
+        .main_table textarea{vertical-align: top}
+    </style>
+</head>
+<body>
+<div class="nav">
+    <ul >
+        <li> <img src="img/建筑.png" class="nav_pic"><a th:href="@{show_class_main}">教室管理</a></li>
+        <li><img src="img/标签.png" class="nav_pic"><a >管理人员管理</a></li>
+        <li><img src="img/人物-人.png" class="nav_pic"><a >学生信息管理</a></li>
+    </ul>
+
+</div>
+<div class="main">
+    <div class="main_table" >
+        <form action="save_edit_class_info" method="post">
+            <div>教室编号: <input type="text" size="20" name="c_id" id="c_id" maxlength="9" th:value="${c_id}" ></div>
+            <br>
+            <div>教室名称: <input type="text" size="20" name="cname" id="cname" maxlength="5" th:value="${cname}" ></div>
+            <br>
+            <div>教室地点: <input type="text" size="20" name="cad" id="cad" maxlength="16" th:value="${cad}" ></div>
+            <br>
+            <div>教室类型: <input type="text" size="20" name="cty" id="cty" maxlength="16" th:value="${cty}" ></div>
+            <br>
+            <div>教室人数容量: <input type="text" name="cap" id="cap" th:value="${cap}"></div>
+            <br>
+            <div class="cdd">教室简介: <textarea cols="20" rows="8" id="cinfo" name="cinfo" maxlength="255"  placeholder="多行输入" th:text="${cinfo}"></textarea></div>
+            <br>
+            <input type="hidden" th:name="start_page" th:value="${start_page}">
+            <input type="hidden" th:name="page_size" th:value="${page_size}">
+            <div><button id="add_bt" type="submit">确认</button><button id="cl_bt" type="button" ><a th:href="@{show_class_main(field_value=${''},field_name=${''},start_page=1,page_size=10)}">取消</a></button></div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
